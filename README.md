@@ -1,5 +1,4 @@
 # Wazuh-Siem-Homelab
-Home SIEM Lab via Wazuh
 
 **Overview**
 This project documents my hands-on deployment of a Security Information and Event Management (SIEM) lab using Wazuh. The lab uses an Ubuntu Server virtual machine to host the Wazuh platform and a Windows endpoint to generate security telemetry.

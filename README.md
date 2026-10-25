@@ -1,9 +1,11 @@
 # Wazuh-Siem-Homelab
 
+
 **Overview**
 This project documents my hands-on deployment of a Security Information and Event Management (SIEM) lab using Wazuh. The lab uses an Ubuntu Server virtual machine to host the Wazuh platform and a Windows endpoint to generate security telemetry.
 
 The goal is to develop practical skills in SIEM administration, endpoint monitoring, security event analysis, and troubleshooting.
+
 
 **Objectives**
 
@@ -19,6 +21,7 @@ Configure and test File Integrity Monitoring (FIM).
 
 Document troubleshooting and investigation findings.
 
+
 **Lab Architecture**
 
 Hypervisor: Oracle VirtualBox
@@ -32,6 +35,7 @@ Endpoint: Windows
 Remote administration: SSH from Windows PowerShell
 
 Networking: Bridged adapter on a private LAN
+
 
 **Implementation**
 
@@ -52,6 +56,7 @@ Located the Windows agent configuration file (ossec.conf) and began configuring 
 
 The next validation step is to generate controlled file changes and confirm that Wazuh records the corresponding events.
 
+
 **Virtual Disk Capacity**
 
 Problem: The initial Wazuh installation failed because the virtual disk ran out of space.
@@ -68,6 +73,7 @@ Resolution: Rebuilt the lab using Ubuntu Server 24.04 LTS before completing the 
 
 Lesson learned: Verify operating system compatibility with the vendor's installation documentation before deploying security infrastructure.
 
+
 **Windows Agent Connectivity**
 
 Problem: The Windows agent initially appeared as Pending in the Wazuh dashboard.
@@ -75,6 +81,7 @@ Problem: The Windows agent initially appeared as Pending in the Wazuh dashboard.
 Resolution: Checked the agent service and network connectivity, then verified that the agent became Active.
 
 Lesson learned: Agent enrollment, service status, and network connectivity are important troubleshooting checkpoints.
+
 
 **Skills Demonstrated**
 
@@ -95,6 +102,7 @@ Basic security monitoring
 Technical troubleshooting
 
 Security documentation
+
 
 **Future Improvements**
 

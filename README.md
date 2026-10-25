@@ -6,22 +6,35 @@ This project documents my hands-on deployment of a Security Information and Even
 The goal is to develop practical skills in SIEM administration, endpoint monitoring, security event analysis, and troubleshooting.
 
 **Objectives**
+
 Deploy an all-in-one Wazuh server.
+
 Configure network connectivity and remote Linux administration.
+
 Enroll a Windows endpoint as a Wazuh agent.
+
 Explore security alerts and endpoint telemetry.
+
 Configure and test File Integrity Monitoring (FIM).
+
 Document troubleshooting and investigation findings.
 
 **Lab Architecture**
+
 Hypervisor: Oracle VirtualBox
+
 SIEM server: Ubuntu Server 24.04 LTS
+
 SIEM platform: Wazuh 4.x
+
 Endpoint: Windows
+
 Remote administration: SSH from Windows PowerShell
+
 Networking: Bridged adapter on a private LAN
 
 **Implementation**
+
 1. Ubuntu Server Deployment
 Installed Ubuntu Server 24.04 LTS in VirtualBox and configured bridged networking to allow the VM to communicate with the Windows host.
 
@@ -66,19 +79,31 @@ Lesson learned: Agent enrollment, service status, and network connectivity are i
 **Skills Demonstrated**
 
 Linux system administration
+
 Virtual machine configuration
+
 TCP/IP networking
+
 SSH remote administration
+
 SIEM deployment and administration
+
 Endpoint agent enrollment
+
 Basic security monitoring
+
 Technical troubleshooting
+
 Security documentation
 
 **Future Improvements**
 
 Configure and validate File Integrity Monitoring.
+
 Investigate Windows authentication events and failed logins.
+
 Document security alerts and map relevant detections to MITRE ATT&CK.
-Add a Linux endpoint and compare telemetry across operating systems.
+
+Add a Linux endpoint and compare across operating systems.
+
 Explore vulnerability detection and security configuration assessment.

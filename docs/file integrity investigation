@@ -1,0 +1,93 @@
+# File Integrity Monitoring (FIM) Investigation
+
+## 1. Objective
+
+The objective of this investigation was to configure and validate Wazuh File Integrity Monitoring (FIM) on a Windows endpoint. The test focused on determining whether Wazuh could detect file creation, modification, and deletion within a monitored directory.
+
+FIM monitors changes to files and directories to help identify unauthorized modifications, suspicious activity, and potential indicators of compromise.
+
+## 2. Lab Environment
+
+| Component | Configuration |
+|---|---|
+| SIEM platform | Wazuh 4.14 |
+| SIEM server | Ubuntu Server 24.04 LTS |
+| Endpoint | Windows |
+| Wazuh agent | WindowsHost |
+| Agent ID | 001 |
+| Monitored directory | `C:\Users\simon\test\` |
+| Wazuh module | File Integrity Monitoring (Syscheck) |
+
+## 3. Configuration and Testing
+
+A Windows directory was configured for monitoring through the Wazuh agent's `ossec.conf` configuration file.
+
+The following activities were performed within the monitored directory:
+
+1. Created new text files.
+2. Modified an existing text file.
+3. Deleted test files.
+4. Reviewed the resulting events in the Wazuh dashboard.
+
+The dashboard was filtered to display Syscheck events from agent `001` over the previous 24 hours.
+
+## 4. Results and Evidence
+
+The Wazuh dashboard recorded file integrity events from the `WindowsHost` agent. The screenshot shows three event types:
+
+| Event | Rule ID | Rule Level | Description |
+|---|---:|---:|---|
+| File added | 554 | 5 | File added to the system |
+| File modified | 550 | 7 | Integrity checksum changed |
+| File deleted | 553 | 7 | File deleted |
+
+The dashboard displayed 10 matching events associated with the monitored directory during the selected time range.
+
+### Observed Events
+
+- **File creation:** Wazuh detected newly created text files, including `test1.txt` and `new text document.txt`.
+- **File modification:** Wazuh detected a change to `integritytest.txt`, reporting that its integrity checksum changed.
+- **File deletion:** Wazuh detected the deletion of test files, including `test1.txt` and `new text document.txt`.
+
+These events demonstrate that Wazuh observed file changes within the monitored directory.
+
+## 5. Analysis
+
+The results indicate that File Integrity Monitoring was functioning on the Windows endpoint.
+
+The file-added events demonstrate that Wazuh detected new files. The modification event indicates that the monitored file's integrity checksum changed, while the deletion events demonstrate that Wazuh detected files being removed.
+
+The rule levels shown in the dashboard were 5 for file additions and 7 for modifications and deletions. These values represent Wazuh rule severity levels; they do not independently establish that an event was malicious.
+
+In this controlled test, the changes were intentional and generated as part of validating the monitoring configuration. In a production environment, similar events could warrant investigation depending on the affected file, user, timing, and surrounding activity.
+
+## 6. Security Relevance
+
+File Integrity Monitoring can help security teams identify:
+
+- Unauthorized changes to critical configuration files.
+- Unexpected creation or deletion of files.
+- Potential tampering with system or application files.
+- Changes that may be associated with malware or post-compromise activity.
+
+FIM alerts provide visibility into file changes, but they do not prove malicious intent on their own. Analysts should correlate these events with authentication logs, process activity, endpoint telemetry, and other relevant evidence before determining whether an incident has occurred.
+
+## 7. Conclusion
+
+The investigation successfully demonstrated Wazuh File Integrity Monitoring on the Windows endpoint. The dashboard recorded file creation, modification, and deletion events from the configured test directory.
+
+This exercise provided practical experience with endpoint monitoring, Syscheck events, Wazuh rule levels, and interpreting file integrity alerts.
+
+### Potential Next Steps
+
+- Monitor a test directory containing sample configuration files.
+- Review additional event fields to identify timestamps and other available context.
+- Investigate related Windows authentication and process events.
+- Explore monitoring important system directories with appropriate exclusions.
+- Document how an analyst would triage an unexpected file modification.
+
+## 8. Evidence
+
+Screenshot: `../screenshots/Integrity Test Success.png`
+
+The screenshot shows the Wazuh File Integrity Monitoring events for agent `WindowsHost`, including file additions, modifications, and deletions.

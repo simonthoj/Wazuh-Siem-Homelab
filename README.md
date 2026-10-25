@@ -40,6 +40,7 @@ Located the Windows agent configuration file (ossec.conf) and began configuring 
 The next validation step is to generate controlled file changes and confirm that Wazuh records the corresponding events.
 
 **Virtual Disk Capacity**
+
 Problem: The initial Wazuh installation failed because the virtual disk ran out of space.
 
 Resolution: Increased the virtual disk capacity and expanded the Ubuntu logical volume and ext4 filesystem. Verified the available capacity using df -h.
@@ -47,6 +48,7 @@ Resolution: Increased the virtual disk capacity and expanded the Ubuntu logical 
 Lesson learned: Virtual disk capacity, partition size, logical volume allocation, and filesystem size are separate layers that may require separate adjustments.
 
 **Operating System Compatibility**
+
 Problem: The initial installer warned that the operating system was not in its recommended list.
 
 Resolution: Rebuilt the lab using Ubuntu Server 24.04 LTS before completing the deployment.
@@ -62,6 +64,7 @@ Resolution: Checked the agent service and network connectivity, then verified th
 Lesson learned: Agent enrollment, service status, and network connectivity are important troubleshooting checkpoints.
 
 **Skills Demonstrated**
+
 Linux system administration
 Virtual machine configuration
 TCP/IP networking
@@ -73,6 +76,7 @@ Technical troubleshooting
 Security documentation
 
 **Future Improvements**
+
 Configure and validate File Integrity Monitoring.
 Investigate Windows authentication events and failed logins.
 Document security alerts and map relevant detections to MITRE ATT&CK.
